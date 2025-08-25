@@ -17,5 +17,5 @@ texts = text_splitter.split_documents(document)
 print(f"created {len(texts)} chunks")
 
 # step 4 - convert those chunks to vector and store in pinecone
-embeddings = OpenAIEmbeddings(openai_api_type=os.environ.get("OPENAI_API_KEY"))
+embeddings = OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
 PineconeVectorStore.from_documents(texts, embeddings, index_name=os.environ.get("INDEX_NAME"))
