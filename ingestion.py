@@ -8,7 +8,7 @@ from langchain_pinecone import PineconeVectorStore
 load_dotenv()
 
 # step 2 - load the data that needs to be trained for
-loader = PyPDFLoader("./data/attention-is-all-you-need-Paper.pdf")
+loader = PyPDFLoader("./data/annual-report-2024-25.pdf")
 document = loader.load()
 
 # step 3 - split the documents data into manageable chunks

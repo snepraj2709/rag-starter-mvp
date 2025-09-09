@@ -20,11 +20,11 @@ qa = RetrievalQA.from_chain_type(
     llm=chat, chain_type="stuff", retriever=vectorstore.as_retriever()
 )    
 
-res = qa.invoke("Which machine and optimizer was used to train the models.")
+res = qa.invoke("How is new Technologies being used at SEBI.")
 print(res) 
 
-res = qa.invoke("Why did we vary the number of attention heads and the attention key and value dimensions")
+res = qa.invoke("What are some of the highlights from annual report 2024-25")
 print(res)
 
-res =qa.invoke('Can you elaborate more on the last question regarding transaction id 1236?')
+res =qa.invoke('How many programmes were conducted free of cost During 2024-25?')
 print(res)
