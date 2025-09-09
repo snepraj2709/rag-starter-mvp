@@ -26,11 +26,11 @@ if __name__=='__main__':
 
     res = qa.invoke({"question":"How is new Technologies being used at SEBI.",
                      "chat_history":chat_history})
-    print(res)
+    print(res.json())
 
     history =(res["question"], res["answer"])
     chat_history.append(history)
 
     res = qa.invoke({"question":"Continuining with the last question, Is Gen AI a technology SEBI used this year",
                      "chat_history":chat_history})
-    print(res)
+    print(res.json())
