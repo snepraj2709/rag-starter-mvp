@@ -1,7 +1,10 @@
 import os
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
-from langchain.chains import RetrievalQA
+try:
+    from langchain.chains import RetrievalQA
+except ModuleNotFoundError:
+    from langchain_classic.chains import RetrievalQA
 from langchain_community.chat_models import ChatOpenAI
 from langchain_pinecone import PineconeVectorStore
 

@@ -2,10 +2,12 @@ import os
 import warnings
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
-from langchain.chains import ConversationalRetrievalChain
+try:
+    from langchain.chains import ConversationalRetrievalChain
+except ModuleNotFoundError:
+    from langchain_classic.chains import ConversationalRetrievalChain
 from langchain_community.chat_models import ChatOpenAI
 from langchain_pinecone import PineconeVectorStore
-from langchain.schema import HumanMessage, AIMessage
 
 warnings.filterwarnings('ignore')
 load_dotenv()
@@ -64,7 +66,7 @@ def get_response(user_query: str, chat_history=None):
         chat_history = []
 
     chat_history_pairs = _normalize_chat_history(chat_history)
-    embeddings = OpenAIEmbeddings(openai_api_type=os.environ.get("OPENAI_API_KEY"))
+    embeddings = OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
     vectorstore = PineconeVectorStore(
         index_name=os.environ["INDEX_NAME"],
         embedding=embeddings
